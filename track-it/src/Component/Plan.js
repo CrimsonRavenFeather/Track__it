@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import dayjs from 'dayjs';
 import { UserContext } from '../Context/Context';
 import { useNavigate } from 'react-router-dom';
@@ -230,16 +230,16 @@ export const Plan = () => {
   };
 
   // Load the saved note from localStorage when the component mounts
-  useEffect(() => {
-    const savedNote = localStorage.getItem('note');
-    const savedDate = localStorage.getItem('date');
-    if (savedNote) {
-      setNote(savedNote);
-    }
-    if (savedDate) {
-      setCurrentDate(savedDate);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedNote = localStorage.getItem('note');
+  //   const savedDate = localStorage.getItem('date');
+  //   if (savedNote) {
+  //     setNote(savedNote);
+  //   }
+  //   if (savedDate) {
+  //     setCurrentDate(savedDate);
+  //   }
+  // }, []);
 
   return (
     <div>
