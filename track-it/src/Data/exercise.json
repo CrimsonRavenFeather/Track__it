@@ -1,0 +1,76 @@
+{
+    "workouts": {
+      "chest": [
+        "Bench Press",
+        "Incline Bench Press",
+        "Decline Bench Press",
+        "Chest Fly",
+        "Push-Ups",
+        "Chest Dips",
+        "Cable Crossovers"
+      ],
+      "back": [
+        "Pull-Ups",
+        "Lat Pulldowns",
+        "Deadlift",
+        "Bent-Over Row",
+        "T-Bar Row",
+        "Single-Arm Dumbbell Row",
+        "Seated Cable Row"
+      ],
+      "shoulders": [
+        "Overhead Press",
+        "Arnold Press",
+        "Lateral Raise",
+        "Front Raise",
+        "Face Pull",
+        "Reverse Pec Deck Fly",
+        "Shrugs"
+      ],
+      "biceps": [
+        "Barbell Curl",
+        "Dumbbell Curl",
+        "Hammer Curl",
+        "Preacher Curl",
+        "Concentration Curl",
+        "Cable Curl",
+        "Chin-Ups"
+      ],
+      "triceps": [
+        "Tricep Dips",
+        "Tricep Pushdown",
+        "Skull Crushers",
+        "Overhead Tricep Extension",
+        "Close-Grip Bench Press",
+        "Diamond Push-Ups",
+        "Kickbacks"
+      ],
+      "legs": [
+        "Squats",
+        "Leg Press",
+        "Lunges",
+        "Leg Extensions",
+        "Hamstring Curls",
+        "Romanian Deadlift",
+        "Calf Raises"
+      ],
+      "abs": [
+        "Crunches",
+        "Leg Raises",
+        "Plank",
+        "Bicycle Crunches",
+        "Russian Twists",
+        "Mountain Climbers",
+        "Hanging Leg Raise"
+      ],
+      "glutes": [
+        "Hip Thrust",
+        "Glute Bridge",
+        "Sumo Deadlift",
+        "Bulgarian Split Squat",
+        "Step-Ups",
+        "Cable Kickbacks",
+        "Donkey Kicks"
+      ]
+    }
+  }
