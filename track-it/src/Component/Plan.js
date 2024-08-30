@@ -85,7 +85,6 @@ export const Plan = () => {
   const userState = useContext(UserContext);
   const navigate = useNavigate();
   const [currentDate, setCurrentDate] = useState('');
-  const [selectedExercise, setSelectedExercise] = useState('');
   const [exerciseData, setExerciseData] = useState({});
   const [selectedOption, setSelectedOption] = useState([]);
   const [note, setNote] = useState('');
@@ -101,7 +100,6 @@ export const Plan = () => {
     if (newSelection && !selectedOption.includes(newSelection)) {
       setSelectedOption((prevOption) => [...prevOption, newSelection]);
     }
-    setSelectedExercise(newSelection);
   };
 
   // Function to save date in local storage
