@@ -111,7 +111,7 @@ export const Plan = () => {
     localStorage.setItem('date', newDate);
 
     try {
-      const response = await fetch('https://track-it-ji93.onrender.com/get', {
+      const response = await fetch('https://track-it-ehgv.onrender.com/get', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -203,7 +203,7 @@ export const Plan = () => {
           "exercise": exerciseData,
         }
       };
-      const response = await fetch("https://track-it-ji93.onrender.com/save", {
+      const response = await fetch("https://track-it-ehgv.onrender.com/save", {
         method: "POST",
         headers: {
           'Content-type': "application/json"
