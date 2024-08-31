@@ -1,1 +1,4 @@
-root: [[redirects]] from = “/*” to = “/index.html” status = 200
+[[redirects]] 
+from = "/*" 
+to = "./public/index.html"
+status = 200
