@@ -286,8 +286,8 @@ export const Plan = () => {
             <div className='p-1'>
               {currentDate ? formatDate(currentDate) : 'No date selected'}
             </div>
-            <div className='p-1 underline underline-offset-8'>
-              {userState.userName ? userState.userName : <button className='transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8' onClick={() => { navigate('/login') }}>login</button>}
+            <div className='p-1'>
+              {userState.userName ? userState.userName : "Your are not logged in"}
             </div>
           </div>
 
