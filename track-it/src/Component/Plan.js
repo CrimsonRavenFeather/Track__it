@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { UserContext } from '../Context/Context';
 import { useNavigate } from 'react-router-dom';
+import { Header } from './Header';
 
 export const Plan = () => {
 
@@ -184,8 +185,7 @@ export const Plan = () => {
   // Function to save data at backend
   const saveData = async () => {
     try {
-      if(!userState.token || !userState.email)
-      {
+      if (!userState.token || !userState.email) {
         alert("User is not logged in")
         return
       }
@@ -220,15 +220,6 @@ export const Plan = () => {
     }
   };
 
-  // Logout
-
-  const handleLogout = () => {
-    userState.setToken('');
-    userState.setUserName('');
-    userState.setEmail('');
-    navigate('/login');
-  };
-
   // Load the saved note from localStorage when the component mounts
   useEffect(() => {
     const savedNote = localStorage.getItem('note');
@@ -243,6 +234,7 @@ export const Plan = () => {
 
   return (
     <div>
+      <Header />
       <div className='flex justify-between'>
         <div>
           {/* Date input */}
@@ -296,9 +288,6 @@ export const Plan = () => {
             </div>
             <div className='p-1 underline underline-offset-8'>
               {userState.userName ? userState.userName : <button className='transition-all duration-300 ease-in-out hover:underline hover:underline-offset-8' onClick={() => { navigate('/login') }}>login</button>}
-            </div>
-            <div>
-              <button className='p-2 text-xl w-full rounded-xl transition-colors text-slate-200 bg-slate-950 hover:text-slate-950 hover:bg-slate-200' onClick={handleLogout}>{(!userState.email || ! userState.token)? "Login" : "Logout"}</button>
             </div>
           </div>
 
