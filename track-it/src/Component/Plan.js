@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { UserContext } from '../Context/Context';
-import { useNavigate } from 'react-router-dom';
 import { Header } from './Header';
 
 export const Plan = () => {
@@ -84,8 +83,7 @@ export const Plan = () => {
   }
 
   const userState = useContext(UserContext);
-  const navigate = useNavigate();
-  const [currentDate, setCurrentDate] = useState('');
+  const [currentDate, setCurrentDate] = useState(dayjs().format("YYYY MM DD"));
   const [exerciseData, setExerciseData] = useState({});
   const [selectedOption, setSelectedOption] = useState([]);
   const [note, setNote] = useState('');
@@ -222,6 +220,7 @@ export const Plan = () => {
 
   // Load the saved note from localStorage when the component mounts
   useEffect(() => {
+    setCurrentDate(currentDate)
     const savedNote = localStorage.getItem('note');
     const savedDate = localStorage.getItem('date');
     if (savedNote) {
@@ -235,21 +234,34 @@ export const Plan = () => {
   return (
     <div>
       <Header />
-      <div className='flex justify-between'>
+
+      <div>
         <div>
-          {/* Date input */}
-          <div className='p-4'>
-            <input
-              className='border border-slate-300 p-4 w-full rounded-xl'
-              type="date"
-              onChange={handleDateChange}
-              value={currentDate}
-            />
+          <div className='flex justify-between'>
+            {/* Date input */}
+            <div className='p-4'>
+              <input
+                className='border border-slate-300 p-4 w-full rounded-xl'
+                type="date"
+                value={currentDate}
+                onChange={handleDateChange}
+              />
+            </div>
+            {/* Save button */}
+            <div className='p-4'>
+              <button className='p-4 w-full rounded-xl transition-colors text-slate-200 bg-slate-950 hover:text-slate-950 hover:bg-slate-200' onClick={saveData}>Save</button>
+            </div>
+            {/* Date Show */}
+            <div className='p-4 text-left text-xl'>
+              <div className='p-1'>
+                {currentDate ? formatDate(currentDate) : 'No date selected'}
+              </div>
+              <div className='p-1'>
+                {userState.userName ? userState.userName : "Your are not logged in"}
+              </div>
+            </div>
           </div>
-          {/* Save button */}
-          <div className='p-4'>
-            <button className='p-4 w-full rounded-xl transition-colors text-slate-200 bg-slate-950 hover:text-slate-950 hover:bg-slate-200' onClick={saveData}>Save</button>
-          </div>
+
           {/* Note  */}
           <div className='p-4'>
             <div className='border border-slate-300'>
@@ -261,6 +273,13 @@ export const Plan = () => {
               ></textarea>
             </div>
           </div>
+
+          <div>
+
+          </div>
+        </div>
+
+        <div className='flex justify-between'>
           {/* Exercise list  */}
           <div className='p-4'>
             <div>
@@ -280,29 +299,20 @@ export const Plan = () => {
           </div>
         </div>
 
-        <div>
-          {/* Date Show */}
-          <div className='p-4 text-left text-3xl'>
-            <div className='p-1'>
-              {currentDate ? formatDate(currentDate) : 'No date selected'}
-            </div>
-            <div className='p-1'>
-              {userState.userName ? userState.userName : "Your are not logged in"}
-            </div>
-          </div>
-
-          {/* Selected Exercise */}
-          <div className='p-4'>
-            {selectedOption.map((option, index) => (
-              <div key={index} className='rounded-xl border-2 border-slate-300 p-2'>
-                <div className='flex justify-between p-1 border-b-2 border-slate-300'>
-                  <div className='underline-offset-1'>
-                    {option}
-                  </div>
-                  <div>
-                    <button onClick={() => handleRemove(option)}>X</button>
-                  </div>
+        {/* Selected Exercise */}
+        <div className='p-4 grid grid-cols-3 gap-4"'>
+          {selectedOption.map((option, index) => (
+            <div key={index} className='rounded-xl border-2 border-slate-300 p-2 flex flex-col justify-between'>
+              <div className='flex justify-between p-1 border-b-2 border-slate-300'>
+                <div className='underline-offset-1'>
+                  {option}
                 </div>
+                <div>
+                  <button onClick={() => handleRemove(option)}>X</button>
+                </div>
+              </div>
+
+              <div>
                 {Object.keys(exerciseData[option] || {}).map((setIndex) => (
                   <div key={setIndex} className='p-1'>
                     <div className='flex justify-between'>
@@ -325,14 +335,14 @@ export const Plan = () => {
                     />
                   </div>
                 ))}
-                <div className='p-2'>
-                  <button className='p-4 w-full rounded-xl transition-colors text-slate-200 bg-slate-950 hover:text-slate-950 hover:bg-slate-200' onClick={() => handleAddSet(option)}>
-                    Add Set
-                  </button>
-                </div>
               </div>
-            ))}
-          </div>
+              <div className='p-2'>
+                <button className='p-4 w-full rounded-xl transition-colors text-slate-200 bg-slate-950 hover:text-slate-950 hover:bg-slate-200' onClick={() => handleAddSet(option)}>
+                  Add Set
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
