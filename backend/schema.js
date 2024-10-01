@@ -19,8 +19,7 @@ const userSchema = new mongoose.Schema({
 const dataSchema = new mongoose.Schema({
     email:{
         type: String,
-        required: true,
-        unique: true
+        required: true
     } , 
     date: {
         type: Date,
